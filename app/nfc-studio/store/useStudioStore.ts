@@ -28,6 +28,7 @@ export interface CardFrontState {
     backgroundUrl?: string;
     overlayUrl?: string;
     overlayOpacity?: number;
+    brandName?: string; // Customizable brand name
     layout: "minimal" | "centered" | "custom";
 }
 
@@ -169,7 +170,8 @@ const defaultCardFront: CardFrontState = {
         company: "APPLIX VISION",
         website: "applix.com",
     },
-    layout: "minimal"
+    layout: "minimal",
+    brandName: "APPLIX"
 };
 
 const defaultCardBack: CardBackState = {

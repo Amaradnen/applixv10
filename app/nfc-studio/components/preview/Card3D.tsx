@@ -8,7 +8,7 @@ import clsx from "clsx";
 import QRCode from 'react-qr-code';
 
 export default function Card3D() {
-    const { cardFront, cardBack, activeSide, setActiveSide, updateCardFrontText, updateCardBackText, updateCardBackInvitationText } = useStudioStore();
+    const { cardFront, cardBack, activeSide, setActiveSide, updateCardFrontText, updateCardBackText, updateCardBackInvitationText, updateCardFront } = useStudioStore();
     const [mounted, setMounted] = useState(false);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -96,7 +96,14 @@ export default function Card3D() {
                         ) : (
                             <div className="flex items-center gap-2 opacity-50">
                                 <Hexagon size={24} />
-                                <span className="font-bold tracking-widest text-xs">APPLIX</span>
+                                <span
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => updateCardFront({ brandName: e.currentTarget.textContent || 'APPLIX' })}
+                                    className="font-bold tracking-widest text-xs outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-1 cursor-text"
+                                >
+                                    {cardFront.brandName || 'APPLIX'}
+                                </span>
                             </div>
                         )}
                         <div className="opacity-40">
