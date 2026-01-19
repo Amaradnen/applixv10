@@ -208,48 +208,22 @@ export default function DesignControls() {
                 {activeSide === 'back' && (
                     <section className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="bg-white/5 border border-white/10 p-4 rounded-xl space-y-4">
-                            <div>
-                                <label className="text-xs font-bold text-white mb-2 block">Informations Verso</label>
-                                <div className="space-y-3">
-                                    <input
-                                        type="email"
-                                        value={cardBack.texts.email || ''}
-                                        onChange={(e) => updateCardBack({ texts: { ...cardBack.texts, email: e.target.value } })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                        placeholder="Email"
-                                    />
-                                    <input
-                                        type="tel"
-                                        value={cardBack.texts.phone || ''}
-                                        onChange={(e) => updateCardBack({ texts: { ...cardBack.texts, phone: e.target.value } })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                        placeholder="Téléphone"
-                                    />
-                                    <input
-                                        type="text"
-                                        value={cardBack.texts.address || ''}
-                                        onChange={(e) => updateCardBack({ texts: { ...cardBack.texts, address: e.target.value } })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                        placeholder="Adresse"
-                                    />
-                                    <input
-                                        type="text"
-                                        value={cardBack.texts.website || ''}
-                                        onChange={(e) => updateCardBack({ texts: { ...cardBack.texts, website: e.target.value } })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                        placeholder="Site Web"
-                                    />
+                            <div className="bg-gg-gold/10 border border-gg-gold/20 rounded-xl p-4 mb-4">
+                                <div className="flex items-start gap-3">
+                                    <div className="text-gg-gold mt-0.5">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="M12 16v-4" />
+                                            <path d="M12 8h.01" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div className="text-xs font-bold text-gg-gold mb-1">Édition Directe - Verso</div>
+                                        <div className="text-[11px] text-white/60 leading-relaxed">
+                                            Cliquez sur le texte du verso (email, téléphone, adresse, texte d&apos;invitation) pour le modifier directement.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <label className="text-xs font-bold text-white mb-2 block">Texte d&apos;invitation</label>
-                                <input
-                                    type="text"
-                                    value={cardBack.text}
-                                    onChange={(e) => updateCardBack({ text: e.target.value })}
-                                    className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white"
-                                />
                             </div>
 
                             <div>

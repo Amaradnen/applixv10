@@ -8,7 +8,7 @@ import clsx from "clsx";
 import QRCode from 'react-qr-code';
 
 export default function Card3D() {
-    const { cardFront, cardBack, activeSide, setActiveSide, updateCardFrontText } = useStudioStore();
+    const { cardFront, cardBack, activeSide, setActiveSide, updateCardFrontText, updateCardBackText, updateCardBackInvitationText } = useStudioStore();
     const [mounted, setMounted] = useState(false);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -217,14 +217,57 @@ export default function Card3D() {
                             </div>
                         )}
 
-                        <p className="text-xs font-bold tracking-widest uppercase opacity-70">{cardBack.text}</p>
+                        <p
+                            contentEditable
+                            suppressContentEditableWarning
+                            onBlur={(e) => updateCardBackInvitationText(e.currentTarget.textContent || '')}
+                            className="text-xs font-bold tracking-widest uppercase opacity-70 outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
+                        >
+                            {cardBack.text}
+                        </p>
 
                         {/* Verso Contact Info */}
                         <div className="text-center space-y-1 text-[10px] opacity-60">
-                            {cardBack.texts.email && <div>{cardBack.texts.email}</div>}
-                            {cardBack.texts.phone && <div>{cardBack.texts.phone}</div>}
-                            {cardBack.texts.address && <div>{cardBack.texts.address}</div>}
-                            {cardBack.texts.website && <div className="font-bold">{cardBack.texts.website}</div>}
+                            {cardBack.texts.email && (
+                                <div
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => updateCardBackText('email', e.currentTarget.textContent || '')}
+                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
+                                >
+                                    {cardBack.texts.email}
+                                </div>
+                            )}
+                            {cardBack.texts.phone && (
+                                <div
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => updateCardBackText('phone', e.currentTarget.textContent || '')}
+                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
+                                >
+                                    {cardBack.texts.phone}
+                                </div>
+                            )}
+                            {cardBack.texts.address && (
+                                <div
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => updateCardBackText('address', e.currentTarget.textContent || '')}
+                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
+                                >
+                                    {cardBack.texts.address}
+                                </div>
+                            )}
+                            {cardBack.texts.website && (
+                                <div
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => updateCardBackText('website', e.currentTarget.textContent || '')}
+                                    className="font-bold outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
+                                >
+                                    {cardBack.texts.website}
+                                </div>
+                            )}
                         </div>
 
                         {/* Signature - VERSO ONLY */}

@@ -30,3 +30,5 @@ pnpm-debug.log*
 
 # prisma
 prisma/dev.db
+
+.vercel

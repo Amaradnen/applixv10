@@ -130,6 +130,8 @@ interface StudioStore {
     updateCardFront: (updates: Partial<CardFrontState>) => void;
     updateCardFrontText: (key: keyof CardFrontState["texts"], value: string) => void;
     updateCardBack: (updates: Partial<CardBackState>) => void;
+    updateCardBackText: (key: keyof CardBackState["texts"], value: string) => void;
+    updateCardBackInvitationText: (text: string) => void;
     setActiveSide: (side: 'front' | 'back') => void;
 
     // Actions - Profile
@@ -240,6 +242,19 @@ export const useStudioStore = create<StudioStore>()(
             updateCardBack: (updates) =>
                 set((state) => ({
                     cardBack: { ...state.cardBack, ...updates }
+                })),
+
+            updateCardBackText: (key, value) =>
+                set((state) => ({
+                    cardBack: {
+                        ...state.cardBack,
+                        texts: { ...state.cardBack.texts, [key]: value }
+                    }
+                })),
+
+            updateCardBackInvitationText: (text) =>
+                set((state) => ({
+                    cardBack: { ...state.cardBack, text }
                 })),
 
             setActiveSide: (side) => set({ activeSide: side }),
