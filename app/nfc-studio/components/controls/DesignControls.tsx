@@ -197,6 +197,7 @@ export default function DesignControls() {
                                         <SignaturePad
                                             currentSignature={cardFront.signatureValue}
                                             onSave={(dataURL) => updateCardFront({ signatureValue: dataURL })}
+                                            onClear={() => updateCardFront({ signatureValue: '' })}
                                         />
                                     )}
 
@@ -340,6 +341,7 @@ export default function DesignControls() {
                                             <SignaturePad
                                                 currentSignature={cardBack.signatureValue}
                                                 onSave={(dataURL) => updateCardBack({ signatureValue: dataURL })}
+                                                onClear={() => updateCardBack({ signatureValue: '' })}
                                             />
                                         )}
 

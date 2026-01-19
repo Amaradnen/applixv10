@@ -6,10 +6,11 @@ import { Trash2, Check, PenTool } from 'lucide-react';
 
 interface SignaturePadProps {
     onSave: (dataURL: string) => void;
+    onClear?: () => void;
     currentSignature?: string;
 }
 
-export default function SignaturePad({ onSave, currentSignature }: SignaturePadProps) {
+export default function SignaturePad({ onSave, onClear, currentSignature }: SignaturePadProps) {
     const sigPad = useRef<SignatureCanvas>(null);
     const [isEmpty, setIsEmpty] = useState(true);
     const [strokeWidth, setStrokeWidth] = useState(2);
@@ -113,13 +114,24 @@ export default function SignaturePad({ onSave, currentSignature }: SignaturePadP
 
             {/* Current Signature Preview */}
             {currentSignature && (
-                <div className="mt-4 p-3 bg-white/5 rounded-lg border border-white/10">
-                    <p className="text-xs text-white/50 mb-2">Signature actuelle :</p>
-                    <img
-                        src={currentSignature}
-                        alt="Current signature"
-                        className="h-12 object-contain bg-white rounded px-2 py-1"
-                    />
+                <div className="mt-4 p-3 bg-white/5 rounded-lg border border-white/10 flex items-center justify-between">
+                    <div>
+                        <p className="text-xs text-white/50 mb-2">Signature actuelle :</p>
+                        <img
+                            src={currentSignature}
+                            alt="Current signature"
+                            className="h-12 object-contain bg-white rounded px-2 py-1"
+                        />
+                    </div>
+                    {onClear && (
+                        <button
+                            onClick={onClear}
+                            className="p-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-lg transition"
+                            title="Supprimer la signature"
+                        >
+                            <Trash2 size={16} />
+                        </button>
+                    )}
                 </div>
             )}
         </div>
