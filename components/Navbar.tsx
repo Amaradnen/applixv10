@@ -25,18 +25,7 @@ export default function Navbar() {
       <div className="glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
-              style={{ background: "linear-gradient(135deg, rgba(227,181,46,1) 0%, rgba(255,255,255,0.15) 100%)" }}
-            >
-              <span className="font-black text-black">A</span>
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="font-display font-bold text-white text-xl tracking-tight">APPLIX</span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 group-hover:text-gold transition-colors">
-                Golden Gemini
-              </span>
-            </div>
+            <img src="/assets/logo.jpg" alt="APPLIX Logo" className="h-10 w-auto object-contain" />
           </Link>
 
           <div className="hidden xl:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
