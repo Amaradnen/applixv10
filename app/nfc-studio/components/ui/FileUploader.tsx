@@ -36,38 +36,20 @@ export default function FileUploader({
             return;
         }
 
-        // Create preview
+        // Create data URL and use it directly (no API upload needed)
+        setIsUploading(true);
         const reader = new FileReader();
         reader.onload = (e) => {
-            setPreview(e.target?.result as string);
+            const dataUrl = e.target?.result as string;
+            setPreview(dataUrl);
+            onUploadComplete(dataUrl); // Use data URL directly
+            setIsUploading(false);
+        };
+        reader.onerror = () => {
+            setError('Failed to read file');
+            setIsUploading(false);
         };
         reader.readAsDataURL(file);
-
-        // Upload to API
-        setIsUploading(true);
-        try {
-            const formData = new FormData();
-            formData.append('file', file);
-
-            const response = await fetch('/api/upload', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.error || 'Upload failed');
-            }
-
-            const data = await response.json();
-            onUploadComplete(data.url);
-            setPreview(data.url);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : 'Upload failed');
-            setPreview(null);
-        } finally {
-            setIsUploading(false);
-        }
     };
 
     const handleDrop = (e: DragEvent<HTMLDivElement>) => {

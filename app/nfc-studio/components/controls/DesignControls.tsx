@@ -153,54 +153,6 @@ export default function DesignControls() {
                                 maxSize={5}
                             />
                         </section>
-
-                        <section>
-                            <label className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
-                                <ImageIcon size={14} /> Design Overlay (Recto)
-                            </label>
-                            <div className="space-y-3">
-                                <div className="flex gap-2">
-                                    <button
-                                        onClick={() => rectoOverlayInputRef.current?.click()}
-                                        className="flex-1 h-10 rounded-lg border border-dashed border-white/20 flex items-center justify-center text-xs text-white/50 hover:text-white hover:border-white/50 transition"
-                                    >
-                                        {cardFront.overlayUrl ? "Changer Overlay" : "Ajouter Overlay"}
-                                    </button>
-                                    {cardFront.overlayUrl && (
-                                        <button
-                                            onClick={() => updateCardFront({ overlayUrl: undefined })}
-                                            className="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-white hover:bg-red-500/20"
-                                        >
-                                            <X size={14} />
-                                        </button>
-                                    )}
-                                    <input
-                                        type="file"
-                                        ref={rectoOverlayInputRef}
-                                        className="hidden"
-                                        accept="image/*"
-                                        onChange={(e) => handleOverlayUpload(e, 'front')}
-                                    />
-                                </div>
-                                {cardFront.overlayUrl && (
-                                    <div>
-                                        <label className="text-[10px] text-white/40 mb-1 block">Opacité: {overlayOpacity}%</label>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="100"
-                                            value={overlayOpacity}
-                                            onChange={(e) => {
-                                                const val = parseInt(e.target.value);
-                                                setOverlayOpacity(val);
-                                                updateCardFront({ overlayOpacity: val });
-                                            }}
-                                            className="w-full"
-                                        />
-                                    </div>
-                                )}
-                            </div>
-                        </section>
                     </>
                 )}
 
