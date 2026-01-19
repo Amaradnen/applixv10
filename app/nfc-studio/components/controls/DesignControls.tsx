@@ -153,6 +153,86 @@ export default function DesignControls() {
                                 maxSize={5}
                             />
                         </section>
+
+                        {/* Signature Section - RECTO */}
+                        <div>
+                            <div className="flex justify-between items-center mb-3">
+                                <label className="text-xs font-bold uppercase tracking-wider text-white/50 flex items-center gap-2">
+                                    <PenTool size={14} /> Signature
+                                </label>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[10px] text-white/60 uppercase">{cardFront.signatureEnabled ? "ON" : "OFF"}</span>
+                                    <button
+                                        onClick={() => updateCardFront({ signatureEnabled: !cardFront.signatureEnabled })}
+                                        className={clsx("w-8 h-4 rounded-full relative transition-colors", cardFront.signatureEnabled ? "bg-gg-gold" : "bg-white/20")}
+                                    >
+                                        <div className={clsx("absolute top-0.5 w-3 h-3 rounded-full bg-black transition-all", cardFront.signatureEnabled ? "left-4.5" : "left-0.5")} />
+                                    </button>
+                                </div>
+                            </div>
+                            {cardFront.signatureEnabled && (
+                                <div className="space-y-3 mt-3">
+                                    <div className="grid grid-cols-3 gap-2">
+                                        <button
+                                            onClick={() => updateCardFront({ signatureType: 'text' })}
+                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'text' ? "bg-white/10 border-gg-gold" : "border-white/10")}
+                                        >
+                                            Texte
+                                        </button>
+                                        <button
+                                            onClick={() => updateCardFront({ signatureType: 'draw' })}
+                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'draw' ? "bg-white/10 border-gg-gold" : "border-white/10")}
+                                        >
+                                            Dessiner
+                                        </button>
+                                        <button
+                                            onClick={() => updateCardFront({ signatureType: 'upload' })}
+                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'upload' ? "bg-white/10 border-gg-gold" : "border-white/10")}
+                                        >
+                                            Image
+                                        </button>
+                                    </div>
+
+                                    {cardFront.signatureType === 'draw' && (
+                                        <SignaturePad
+                                            currentSignature={cardFront.signatureValue}
+                                            onSave={(dataURL) => updateCardFront({ signatureValue: dataURL })}
+                                        />
+                                    )}
+
+                                    {cardFront.signatureType === 'upload' && (
+                                        <FileUploader
+                                            label="Signature Image"
+                                            currentFile={cardFront.signatureValue}
+                                            onUploadComplete={(url) => updateCardFront({ signatureValue: url })}
+                                            accept="image/*"
+                                            maxSize={2}
+                                        />
+                                    )}
+
+                                    {cardFront.signatureType === 'text' && (
+                                        <input
+                                            type="text"
+                                            value={cardFront.signatureValue || ''}
+                                            onChange={(e) => updateCardFront({ signatureValue: e.target.value })}
+                                            className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
+                                            placeholder="Votre signature"
+                                        />
+                                    )}
+
+                                    <div className="mt-3 pt-3 border-t border-white/10">
+                                        <label className="text-[10px] text-white/40 mb-1 block uppercase font-bold">Texte sous signature</label>
+                                        <input
+                                            type="text"
+                                            value={cardFront.signatureLabel || ''}
+                                            onChange={(e) => updateCardFront({ signatureLabel: e.target.value })}
+                                            className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30 italic"
+                                            placeholder="ex: Luxora Clinic"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </>
                 )}
 
@@ -221,7 +301,7 @@ export default function DesignControls() {
                             <div>
                                 <div className="flex justify-between items-center mb-3">
                                     <label className="text-xs font-bold uppercase tracking-wider text-white/50 flex items-center gap-2">
-                                        <PenTool size={14} /> Signature (Verso uniquement)
+                                        <PenTool size={14} /> Signature
                                     </label>
                                     <div className="flex items-center gap-2">
                                         <span className="text-[10px] text-white/60 uppercase">{cardBack.signatureEnabled ? "ON" : "OFF"}</span>

@@ -30,7 +30,14 @@ export interface CardFrontState {
     overlayOpacity?: number;
     brandName?: string; // Customizable brand name
     layout: "minimal" | "centered" | "custom";
+    signatureEnabled?: boolean;
+    signatureType?: "text" | "draw" | "upload";
+    signatureValue?: string;
+    signatureLabel?: string;
 }
+
+// ... existing code ...
+
 
 export interface CardBackState {
     text: string;
@@ -172,7 +179,11 @@ const defaultCardFront: CardFrontState = {
         website: "applix.com",
     },
     layout: "minimal",
-    brandName: "APPLIX"
+    brandName: "APPLIX",
+    signatureEnabled: false,
+    signatureType: "text",
+    signatureValue: "",
+    signatureLabel: ""
 };
 
 const defaultCardBack: CardBackState = {

@@ -184,6 +184,34 @@ export default function Card3D() {
                         )}
                     </div>
 
+                    {/* Front Signature */}
+                    {cardFront.signatureEnabled && (cardFront.signatureValue || cardFront.signatureLabel) && (
+                        <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center z-20 pointer-events-none">
+                            {cardFront.signatureValue && (
+                                <>
+                                    {cardFront.signatureType === 'text' && (
+                                        <div className="font-script text-2xl opacity-90 rotate-[-5deg]" style={{ fontFamily: 'cursive' }}>
+                                            {cardFront.signatureValue}
+                                        </div>
+                                    )}
+                                    {(cardFront.signatureType === 'draw' || cardFront.signatureType === 'upload') && (
+                                        <img
+                                            src={cardFront.signatureValue}
+                                            className="h-14 object-contain rotate-[-2deg] opacity-90 drop-shadow-sm"
+                                            alt="Signature"
+                                            style={getTextColor() === 'text-black' ? {} : { filter: 'invert(1) brightness(2)' }}
+                                        />
+                                    )}
+                                </>
+                            )}
+                            {cardFront.signatureLabel && (
+                                <div className="font-serif italic text-sm opacity-90 mt-1 tracking-wide drop-shadow-md pb-2">
+                                    {cardFront.signatureLabel}
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                     {/* Shine Effect */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 rounded-2xl pointer-events-none z-20" />
                 </div>
@@ -266,7 +294,7 @@ export default function Card3D() {
                             </div>
                         </div>
 
-                        {/* Signature - VERSO ONLY */}
+                        {/* Signature */}
                         {cardBack.signatureEnabled && (cardBack.signatureValue || cardBack.signatureLabel) && (
                             <div className="mt-4 flex flex-col items-center">
                                 {cardBack.signatureValue && (
