@@ -227,47 +227,43 @@ export default function Card3D() {
                     <div className="relative z-10 flex flex-col items-center space-y-3">
 
                         {/* Verso Contact Info */}
-                        <div className="text-center space-y-1 text-[10px] opacity-60">
-                            {cardBack.texts.email && (
-                                <div
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onBlur={(e) => updateCardBackText('email', e.currentTarget.textContent || '')}
-                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
-                                >
-                                    {cardBack.texts.email}
-                                </div>
-                            )}
-                            {cardBack.texts.phone && (
-                                <div
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onBlur={(e) => updateCardBackText('phone', e.currentTarget.textContent || '')}
-                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
-                                >
-                                    {cardBack.texts.phone}
-                                </div>
-                            )}
-                            {cardBack.texts.address && (
-                                <div
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onBlur={(e) => updateCardBackText('address', e.currentTarget.textContent || '')}
-                                    className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
-                                >
-                                    {cardBack.texts.address}
-                                </div>
-                            )}
-                            {cardBack.texts.website && (
-                                <div
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onBlur={(e) => updateCardBackText('website', e.currentTarget.textContent || '')}
-                                    className="font-bold outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
-                                >
-                                    {cardBack.texts.website}
-                                </div>
-                            )}
+                        <div className="text-center flex flex-col items-center gap-1 text-[10px] opacity-60 w-full max-w-[80%]">
+                            <div
+                                contentEditable
+                                suppressContentEditableWarning
+                                data-placeholder="Email"
+                                onBlur={(e) => updateCardBackText('email', e.currentTarget.textContent || '')}
+                                className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-0.5 cursor-text min-w-[100px] empty:before:content-[attr(data-placeholder)] empty:before:opacity-50 hover:bg-white/5 transition-colors"
+                            >
+                                {cardBack.texts.email}
+                            </div>
+                            <div
+                                contentEditable
+                                suppressContentEditableWarning
+                                data-placeholder="Téléphone"
+                                onBlur={(e) => updateCardBackText('phone', e.currentTarget.textContent || '')}
+                                className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-0.5 cursor-text min-w-[100px] empty:before:content-[attr(data-placeholder)] empty:before:opacity-50 hover:bg-white/5 transition-colors"
+                            >
+                                {cardBack.texts.phone}
+                            </div>
+                            <div
+                                contentEditable
+                                suppressContentEditableWarning
+                                data-placeholder="Adresse"
+                                onBlur={(e) => updateCardBackText('address', e.currentTarget.textContent || '')}
+                                className="outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-0.5 cursor-text min-w-[100px] empty:before:content-[attr(data-placeholder)] empty:before:opacity-50 hover:bg-white/5 transition-colors"
+                            >
+                                {cardBack.texts.address}
+                            </div>
+                            <div
+                                contentEditable
+                                suppressContentEditableWarning
+                                data-placeholder="Site Web"
+                                onBlur={(e) => updateCardBackText('website', e.currentTarget.textContent || '')}
+                                className="font-bold outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-0.5 cursor-text min-w-[100px] empty:before:content-[attr(data-placeholder)] empty:before:opacity-50 hover:bg-white/5 transition-colors"
+                            >
+                                {cardBack.texts.website}
+                            </div>
                         </div>
 
                         {/* Signature - VERSO ONLY */}
