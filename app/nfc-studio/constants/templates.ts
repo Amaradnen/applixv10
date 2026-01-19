@@ -4,6 +4,7 @@ export interface CardTemplateConfig {
     id: string;
     name: string;
     material: CardMaterial;
+    materialLabel?: string;
     template: CardTemplate;
     description: string;
     frontLayout: 'minimal' | 'centered' | 'corner' | 'bold' | 'signature' | 'chip-focus';
@@ -12,58 +13,84 @@ export interface CardTemplateConfig {
 
 export const CARD_TEMPLATES: CardTemplateConfig[] = [
     {
-        id: 'black-minimal',
-        name: 'Black Minimal',
-        material: 'metal-black',
+        id: 'pvc-minimal',
+        name: 'PVC • Minimal Clean',
+        material: 'pvc-black',
+        materialLabel: 'PVC Premium',
         template: 'minimal',
-        description: 'Design épuré et minimaliste sur métal noir',
+        description: 'Design épuré et minimaliste',
         frontLayout: 'minimal',
         backLayout: 'qr-center'
     },
     {
-        id: 'black-bold',
-        name: 'Black Bold',
-        material: 'metal-black',
+        id: 'pvc-bold',
+        name: 'PVC • Bold Title',
+        material: 'pvc-black',
+        materialLabel: 'PVC Premium',
         template: 'bold',
-        description: 'Typographie audacieuse sur métal noir',
+        description: 'Typographie audacieuse',
         frontLayout: 'bold',
         backLayout: 'qr-center'
     },
     {
-        id: 'black-signature',
-        name: 'Black Signature',
+        id: 'pvc-center',
+        name: 'PVC • Center Modern',
+        material: 'pvc-black',
+        materialLabel: 'PVC Premium',
+        template: 'centered',
+        description: 'Design centré moderne',
+        frontLayout: 'centered',
+        backLayout: 'qr-center'
+    },
+    {
+        id: 'metal-monogram',
+        name: 'Metal Black • Monogram Lux',
         material: 'metal-black',
-        template: 'signature',
-        description: 'Design centré sur la signature',
-        frontLayout: 'signature',
+        materialLabel: 'Metal Noir',
+        template: 'monogram',
+        description: 'Luxe et élégance',
+        frontLayout: 'signature', // Fallback to handle layout if 'monogram' not explicitly defined in some switch cases
         backLayout: 'qr-right'
     },
     {
-        id: 'black-corner',
-        name: 'Black Corner',
-        material: 'metal-black',
+        id: 'bamboo-corner',
+        name: 'Bamboo • Eco Corner',
+        material: 'wood-bamboo',
+        materialLabel: 'Bamboo Naturel',
         template: 'diagonal',
-        description: 'Éléments alignés en coin',
+        description: 'Naturel et éco-responsable',
         frontLayout: 'corner',
         backLayout: 'qr-left'
     },
     {
-        id: 'black-chip-focus',
-        name: 'Black Chip Focus',
-        material: 'metal-black',
+        id: 'silver-center',
+        name: 'Silver • Center Tech',
+        material: 'metal-silver',
+        materialLabel: 'Silver Edition',
         template: 'chip-focus',
-        description: 'Design centré sur la puce NFC',
+        description: 'Technologie et brillance',
         frontLayout: 'chip-focus',
         backLayout: 'qr-center'
     },
     {
-        id: 'gold-luxury',
-        name: 'Gold Luxury',
-        material: 'metal-gold',
-        template: 'luxury',
-        description: 'Design premium sur métal doré',
-        frontLayout: 'centered',
+        id: 'metal-minimal-pro',
+        name: 'Metal Black • Minimal Pro',
+        material: 'metal-black',
+        materialLabel: 'Metal Noir',
+        template: 'minimal',
+        description: 'Professionnel et sobre',
+        frontLayout: 'minimal',
         backLayout: 'qr-center'
+    },
+    {
+        id: 'gold-signature',
+        name: 'Gold • Signature',
+        material: 'metal-gold',
+        materialLabel: 'Or Edition',
+        template: 'signature',
+        description: 'Signature exclusive',
+        frontLayout: 'signature',
+        backLayout: 'qr-right'
     }
 ];
 

@@ -24,8 +24,8 @@ export default function DesignControls() {
     const rectoOverlayInputRef = useRef<HTMLInputElement>(null);
     const versoOverlayInputRef = useRef<HTMLInputElement>(null);
 
-    // Use templates from constants
-    const presets = CARD_TEMPLATES.slice(0, 6);
+    // Use templates from constants (now showing all 8)
+    const presets = CARD_TEMPLATES.slice(0, 8);
 
     const handleFileUpload = (file: File, callback: (dataUrl: string) => void) => {
         const reader = new FileReader();
@@ -97,7 +97,7 @@ export default function DesignControls() {
                                 </button>
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <div className="grid grid-cols-2 md:grid-cols-2 gap-3">
                                 {presets.map((p) => (
                                     <button
                                         key={p.id}
@@ -110,7 +110,7 @@ export default function DesignControls() {
                                         )}
                                     >
                                         <div className="font-bold text-white group-hover:text-gg-gold transition-colors">{p.name}</div>
-                                        <div className="text-[10px] text-white/40">{p.material.replace('-', ' ')}</div>
+                                        <div className="text-[10px] text-white/40">{p.materialLabel || p.material.replace('-', ' ')}</div>
                                     </button>
                                 ))}
                             </div>
