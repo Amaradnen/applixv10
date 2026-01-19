@@ -203,19 +203,21 @@ export default function Card3D() {
                         </div>
                     )}
 
+                    {/* QR Code - Top Right & Smaller */}
+                    {cardBack.qrEnabled && (
+                        <div className="absolute top-6 right-6 w-12 h-12 bg-white p-1 rounded-md flex items-center justify-center z-20 shadow-lg">
+                            <QRCode
+                                value={cardBack.qrUrl}
+                                size={40}
+                                bgColor="#ffffff"
+                                fgColor="#000000"
+                                level="M"
+                                style={{ width: '100%', height: '100%' }}
+                            />
+                        </div>
+                    )}
+
                     <div className="relative z-10 flex flex-col items-center space-y-3">
-                        {/* QR Code */}
-                        {cardBack.qrEnabled && (
-                            <div className="w-24 h-24 bg-white p-2 rounded-lg mb-2 flex items-center justify-center">
-                                <QRCode
-                                    value={cardBack.qrUrl}
-                                    size={80}
-                                    bgColor="#ffffff"
-                                    fgColor="#000000"
-                                    level="M"
-                                />
-                            </div>
-                        )}
 
                         {/* Verso Contact Info */}
                         <div className="text-center space-y-1 text-[10px] opacity-60">
