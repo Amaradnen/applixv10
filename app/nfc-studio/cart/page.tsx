@@ -6,8 +6,11 @@ import { ArrowLeft, Plus, Minus, Trash2, ShoppingCart, ArrowRight } from "lucide
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
+import { useTranslations } from 'next-intl';
+
 export default function CartPage() {
     const router = useRouter();
+    const t = useTranslations('nav');
     const { cart, cardFront, profile, updateCartQuantity, removeFromCart, calculateCartTotal, setStep } = useStudioStore();
 
     React.useEffect(() => {
@@ -33,11 +36,11 @@ export default function CartPage() {
         <div className="min-h-screen bg-[#050505] text-white">
             <div className="max-w-5xl mx-auto px-4 py-12">
                 <button
-                    onClick={() => router.push('/nfc-studio')}
+                    onClick={() => router.push('/dashboard')}
                     className="text-sm text-white/50 hover:text-white flex items-center gap-2 mb-8 transition"
                 >
                     <ArrowLeft size={16} />
-                    Retour au Studio
+                    {t('backToDashboard')}
                 </button>
 
                 <div className="mb-8">
@@ -51,10 +54,10 @@ export default function CartPage() {
                         <h2 className="text-xl font-bold mb-2">Votre panier est vide</h2>
                         <p className="text-white/50 mb-6">Ajoutez des articles depuis le Studio NFC</p>
                         <button
-                            onClick={() => router.push('/nfc-studio')}
+                            onClick={() => router.push('/dashboard')}
                             className="px-6 py-3 bg-gg-gold text-black font-bold rounded-xl hover:bg-[#CFA31D] transition"
                         >
-                            Retour au Studio
+                            {t('backToDashboard')}
                         </button>
                     </div>
                 ) : (

@@ -148,5 +148,18 @@
             "blackChipFocus": "Black Chip Focus",
             "goldLuxury": "Gold Luxury"
         }
+    },
+    "nav": {
+        "home": "Accueil",
+        "studio": "Studio",
+        "aiApp": "App IA (v2)",
+        "products": "Produits",
+        "academy": "Académie",
+        "nfcStudio": "Studio NFC",
+        "hub": "Hub",
+        "cart": "Panier",
+        "dashboard": "Tableau de Bord",
+        "backToDashboard": "Retour au Dashboard",
+        "start": "Commencer"
     }
 }

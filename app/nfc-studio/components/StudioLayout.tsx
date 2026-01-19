@@ -7,6 +7,8 @@ import { Globe, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import clsx from "clsx";
 
+import { useTranslations } from 'next-intl';
+
 export default function StudioLayout({
     controls,
     preview
@@ -15,6 +17,7 @@ export default function StudioLayout({
     preview: React.ReactNode;
 }) {
     const { language, toggleLanguage, cart } = useStudioStore();
+    const t = useTranslations('nav');
 
     return (
         <div className="flex flex-col gap-8 w-full max-w-[1600px] mx-auto animate-fade-in-up p-4 md:p-8 bg-gradient-to-br from-[#0a0a0a] via-[#000] to-[#0a0a0a] rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
@@ -66,7 +69,7 @@ export default function StudioLayout({
                         href="/nfc-studio/cart"
                         className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-bold text-white transition-all"
                     >
-                        <span>Panier</span>
+                        <span>{t('cart')}</span>
                         {cart && cart.items.length > 0 && (
                             <span className="bg-gg-gold text-black text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
                                 {cart.items.length}

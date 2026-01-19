@@ -6,19 +6,22 @@ import { useStudioStore } from "../app/nfc-studio/store/useStudioStore";
 import clsx from "clsx";
 import { ShoppingCart } from "lucide-react";
 
-const nav = [
-  { href: "/", label: "Home" },
-  { href: "/studio", label: "Studio" },
-  { href: "/ai-app", label: "IA App (v2)" },
-  { href: "/products", label: "Produits" },
-  { href: "/academy", label: "Academy" },
-  { href: "/nfc-studio", label: "NFC Studio" },
-  { href: "/hub", label: "Hub" }
-];
+import { useTranslations } from 'next-intl';
 
 export default function Navbar() {
   const pathname = usePathname();
   const { language, toggleLanguage, cart } = useStudioStore();
+  const t = useTranslations('nav');
+
+  const nav = [
+    { href: "/", label: t('home') },
+    { href: "/studio", label: t('studio') },
+    { href: "/ai-app", label: t('aiApp') },
+    { href: "/products", label: t('products') },
+    { href: "/academy", label: t('academy') },
+    { href: "/nfc-studio", label: t('nfcStudio') },
+    { href: "/hub", label: t('hub') }
+  ];
 
   return (
     <div className="fixed top-0 w-full z-50">
@@ -81,7 +84,7 @@ export default function Navbar() {
               href="/nfc-studio/cart"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-bold text-white transition-all"
             >
-              <span>Panier</span>
+              <span>{t('cart')}</span>
               {cart && cart.items.length > 0 && (
                 <span className="bg-gg-gold text-black text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
                   {cart.items.length}
