@@ -25,7 +25,17 @@ export default function StudioLayout({
             {/* Top Bar */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-white/10 pb-6 relative z-10">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <img src="/assets/logo.jpg" alt="APPLIX Logo" className="h-10 w-auto object-contain" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg bg-black border border-white/10">
+                        <img src="/assets/logo.jpg" alt="APPLIX Logo" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                        <h1 className="text-xl font-black tracking-tight font-display text-white leading-none">
+                            APPLIX
+                        </h1>
+                        <p className="text-[10px] text-white/40 font-bold tracking-widest uppercase">
+                            NFC Studio
+                        </p>
+                    </div>
                 </Link>
 
                 <StepIndicator />

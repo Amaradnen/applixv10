@@ -25,7 +25,15 @@ export default function Navbar() {
       <div className="glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <img src="/assets/logo.jpg" alt="APPLIX Logo" className="h-10 w-auto object-contain" />
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg bg-black border border-white/10">
+              <img src="/assets/logo.jpg" alt="APPLIX Logo" className="w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="font-display font-bold text-white text-xl tracking-tight">APPLIX</span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 group-hover:text-gold transition-colors">
+                NFC Studio
+              </span>
+            </div>
           </Link>
 
           <div className="hidden xl:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
