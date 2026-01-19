@@ -74,13 +74,13 @@ export interface ProfileState {
 
 export interface CheckoutState {
     customer: {
-        firstName: string;
-        lastName: string;
+        fullName: string;
         email: string;
         phone: string;
     };
     shipping: {
-        address: string;
+        address1: string; // Renamed from address
+        address2?: string; // Added new field
         city: string;
         zip: string;
         country: string;
@@ -95,10 +95,11 @@ export interface CheckoutState {
 
 export interface CartItem {
     id: string;
-    type: "card" | "profile";
+    type: "card" | "profile" | "subscription";
     name: string;
     price: number;
     quantity: number;
+    meta?: any;
 }
 
 export interface CartState {
@@ -199,8 +200,8 @@ const defaultProfile: ProfileState = {
 };
 
 const defaultCheckout: CheckoutState = {
-    customer: { firstName: "", lastName: "", email: "", phone: "" },
-    shipping: { address: "", city: "", zip: "", country: "France", method: "standard" },
+    customer: { fullName: "", email: "", phone: "" },
+    shipping: { address1: "", address2: "", city: "", zip: "", country: "France", method: "standard" },
     payment: { method: "card" },
     promoCode: "",
     discount: 0
@@ -321,9 +322,15 @@ export const useStudioStore = create<StudioStore>()(
                         0
                     );
 
+                    const hasPhysical = state.cart.items.some(i => i.type === 'card' || i.meta?.physical);
                     let shipping = 0;
-                    if (state.checkout.shipping.method === 'express') shipping = 15;
-                    if (state.checkout.shipping.method === 'pickup') shipping = -5;
+
+                    if (hasPhysical) {
+                        const method = state.checkout.shipping.method;
+                        if (method === 'standard') shipping = 9;
+                        else if (method === 'express') shipping = 19;
+                        // pickup is 0
+                    }
 
                     let total = subtotal + shipping;
                     if (state.checkout.discount) {

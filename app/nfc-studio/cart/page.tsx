@@ -14,7 +14,7 @@ export default function CartPage() {
         calculateCartTotal();
     }, [calculateCartTotal]);
 
-    const hasPhysicalCard = cart.items.some(item => item.type === 'card');
+    const hasPhysicalCard = cart.items.some(item => item.type === 'card' || item.meta?.physical);
 
     const getMaterialName = (material: string) => {
         const names: Record<string, string> = {
@@ -71,6 +71,11 @@ export default function CartPage() {
                                                     <div>NFC</div>
                                                     <div className="text-[8px] text-white/50">CARD</div>
                                                 </div>
+                                            ) : item.type === 'subscription' ? (
+                                                <div className="text-xs font-bold text-center">
+                                                    <div>SAAS</div>
+                                                    <div className="text-[8px] text-white/50">PRO</div>
+                                                </div>
                                             ) : (
                                                 <div className="text-xs font-bold text-center">
                                                     <div>PROFIL</div>
@@ -90,6 +95,11 @@ export default function CartPage() {
                                             {item.type === 'profile' && (
                                                 <p className="text-xs text-white/50">
                                                     {profile.name} • {profile.links.length} liens
+                                                </p>
+                                            )}
+                                            {item.type === 'subscription' && (
+                                                <p className="text-xs text-white/50">
+                                                    Abonnement Mensuel/Annuel
                                                 </p>
                                             )}
                                             <p className="text-lg font-bold text-gg-gold mt-2">{item.price}€</p>
