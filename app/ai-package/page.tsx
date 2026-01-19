@@ -153,11 +153,10 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`px-5 py-2 rounded-full text-xs font-black transition-all whitespace-nowrap border ${
-        active
+      className={`px-5 py-2 rounded-full text-xs font-black transition-all whitespace-nowrap border ${active
           ? "bg-white text-black border-white/20"
           : "bg-white/5 text-white/60 border-white/10 hover:bg-white/10"
-      }`}
+        }`}
     >
       {label}
     </button>
@@ -176,17 +175,15 @@ function NavIcon({
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-center gap-1 transition-all duration-300 ${
-        active
+      className={`flex flex-col items-center gap-1 transition-all duration-300 ${active
           ? "text-yellow-300 scale-110"
           : "text-white/50 hover:text-white/80"
-      }`}
+        }`}
     >
       {icon}
       <div
-        className={`w-1 h-1 bg-yellow-300 rounded-full transition-all duration-300 ${
-          active ? "opacity-100" : "opacity-0 scale-0"
-        }`}
+        className={`w-1 h-1 bg-yellow-300 rounded-full transition-all duration-300 ${active ? "opacity-100" : "opacity-0 scale-0"
+          }`}
       />
     </button>
   );
@@ -420,32 +417,31 @@ function ChatInterface({ onBack, model }: { onBack: () => void; model?: Model | 
               </div>
             )}
             <div
-              className={`max-w-[85%] p-3.5 rounded-2xl text-sm leading-relaxed border ${
-                msg.role === "user"
+              className={`max-w-[85%] p-3.5 rounded-2xl text-sm leading-relaxed border ${msg.role === "user"
                   ? "bg-yellow-400 text-black border-yellow-300/30 rounded-br-sm"
                   : "bg-white/5 text-white/85 border-white/10 rounded-bl-sm"
-              }`}
+                }`}
             >
               {msg.role === "user" ? (
                 msg.text
-	              ) : (
-	                <ReactMarkdown
-	                  components={{
-	                    // react-markdown typings changed between versions; some no longer expose `inline` in the type.
-	                    // We keep behaviour the same while staying type-safe for `next build`.
-	                    code(props: any) {
-	                      const { node, inline, className, children, ...rest } = props;
-	                      const match = /language-(\w+)/.exec(className || "");
-	                      return !inline ? (
+              ) : (
+                <ReactMarkdown
+                  components={{
+                    // react-markdown typings changed between versions; some no longer expose `inline` in the type.
+                    // We keep behaviour the same while staying type-safe for `next build`.
+                    code(props: any) {
+                      const { node, inline, className, children, ...rest } = props;
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline ? (
                         <CodeBlock
                           language={match?.[1]}
                           value={String(children).replace(/\n$/, "")}
                         />
                       ) : (
-	                        <code
-	                          className="bg-black/40 px-1 rounded text-yellow-200 font-mono text-xs border border-white/10"
-	                          {...rest}
-	                        >
+                        <code
+                          className="bg-black/40 px-1 rounded text-yellow-200 font-mono text-xs border border-white/10"
+                          {...rest}
+                        >
                           {children}
                         </code>
                       );
@@ -486,11 +482,10 @@ function ChatInterface({ onBack, model }: { onBack: () => void; model?: Model | 
           <button
             onClick={handleSend}
             disabled={!input.trim() || isTyping}
-            className={`p-3 rounded-full transition-all border ${
-              input.trim()
+            className={`p-3 rounded-full transition-all border ${input.trim()
                 ? "bg-yellow-400 text-black border-yellow-300/30 active:scale-95"
                 : "bg-white/5 text-white/30 border-white/10"
-            }`}
+              }`}
           >
             {isTyping ? (
               <Loader2 className="w-4 h-4 animate-spin" />
@@ -688,7 +683,7 @@ function Subscription() {
           </ul>
 
           <button className="w-full py-4 bg-gradient-to-r from-yellow-400 to-amber-600 hover:brightness-110 rounded-xl font-black shadow-lg flex justify-center items-center gap-2 text-black relative z-10 active:scale-95 transition-all">
-            S'abonner maintenant <ChevronRight size={16} />
+            S&apos;abonner maintenant <ChevronRight size={16} />
           </button>
         </div>
       </div>
@@ -751,7 +746,7 @@ export default function AiPackagePage() {
             active={currentView === "home"}
             onClick={() => setCurrentView("home")}
           />
-          <NavIcon icon={<Search className="w-6 h-6" />} active={false} onClick={() => {}} />
+          <NavIcon icon={<Search className="w-6 h-6" />} active={false} onClick={() => { }} />
 
           <button
             onClick={() => setCurrentView("sub")}

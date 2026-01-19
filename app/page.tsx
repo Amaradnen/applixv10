@@ -10,7 +10,7 @@ export default function Home() {
         </div>
 
         <h1 className="text-4xl md:text-7xl font-display font-bold leading-tight">
-          L'ÉCOSYSTÈME <span className="text-gold">GOLDEN GEMINI</span><br />
+          L&apos;ÉCOSYSTÈME <span className="text-gold">GOLDEN GEMINI</span><br />
           POUR APPLIX
         </h1>
 
@@ -28,13 +28,13 @@ export default function Home() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
         {[
-          { title: "1. Creative Studio", desc: "Photos, Reels, Sites web, Ads, branding." , href:"/studio"},
-          { title: "2. IA App (v2)", desc: "Interface app IA (version 2 préférée).", href:"/ai-app"},
-          { title: "3. Produits Digitaux", desc: "Ebooks, packs PLR, templates prêts.", href:"/products"},
-          { title: "4. Academy", desc: "Formations et masterclasses.", href:"/academy"},
-          { title: "5. NFC Studio", desc: "Builder carte + profil + lien public.", href:"/nfc-studio"},
-          { title: "6. Hub Abonnements", desc: "Zone hub (Netflix, Spotify, IA...).", href:"/hub"},
-          { title: "7. IA Package", desc: "App IA mobile (Golden Gemini) + chat + images.", href:"/ai-package"}
+          { title: "1. Creative Studio", desc: "Photos, Reels, Sites web, Ads, branding.", href: "/studio" },
+          { title: "2. IA App (v2)", desc: "Interface app IA (version 2 préférée).", href: "/ai-app" },
+          { title: "3. Produits Digitaux", desc: "Ebooks, packs PLR, templates prêts.", href: "/products" },
+          { title: "4. Academy", desc: "Formations et masterclasses.", href: "/academy" },
+          { title: "5. NFC Studio", desc: "Builder carte + profil + lien public.", href: "/nfc-studio" },
+          { title: "6. Hub Abonnements", desc: "Zone hub (Netflix, Spotify, IA...).", href: "/hub" },
+          { title: "7. IA Package", desc: "App IA mobile (Golden Gemini) + chat + images.", href: "/ai-package" }
         ].map((c) => (
           <a key={c.title} href={c.href} className="glass-card p-8 rounded-3xl hover:translate-y-[-4px] transition block">
             <div className="text-gold text-xs font-bold tracking-widest mb-2">APPLIX</div>

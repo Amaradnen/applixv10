@@ -81,7 +81,7 @@ export default function ProfilePreview({ template, name, bio, slug }: Props) {
           <div className="text-3xl font-display font-bold">{name}</div>
           <div className="text-white/60 text-sm mt-2">{bio}</div>
           <div className="mt-6 space-y-2">
-            <button className="w-full py-3.5 rounded-xl bg-gold text-black font-bold">S'abonner</button>
+            <button className="w-full py-3.5 rounded-xl bg-gold text-black font-bold">S&apos;abonner</button>
             <button className="w-full py-3.5 rounded-xl bg-white/10 border border-gold/30 text-white font-bold">
               Mon Site Web
             </button>
@@ -101,7 +101,7 @@ export default function ProfilePreview({ template, name, bio, slug }: Props) {
         <div className="text-3xl font-display font-bold">{name}</div>
         <div className="text-white/60 text-sm mt-2">{bio}</div>
         <div className="mt-6 space-y-2">
-          <button className="w-full py-3.5 rounded-xl bg-white text-black font-bold">S'abonner</button>
+          <button className="w-full py-3.5 rounded-xl bg-white text-black font-bold">S&apos;abonner</button>
           <button className="w-full py-3.5 rounded-xl bg-white/10 border border-white/10 text-white font-bold">
             Mon Site Web
           </button>
