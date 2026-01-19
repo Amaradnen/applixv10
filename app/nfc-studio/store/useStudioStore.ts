@@ -77,6 +77,7 @@ export interface ProfileState {
     cover?: string;
     links: SocialLink[];
     theme: "dark" | "light" | "gold" | "blue" | "custom";
+    layout: "list" | "grid" | "cards";
 }
 
 export interface CheckoutState {
@@ -207,7 +208,8 @@ const defaultProfile: ProfileState = {
     name: "Alex Martin",
     bio: "Founder at Applix Vision.",
     links: [],
-    theme: "dark"
+    theme: "dark",
+    layout: "list"
 };
 
 const defaultCheckout: CheckoutState = {

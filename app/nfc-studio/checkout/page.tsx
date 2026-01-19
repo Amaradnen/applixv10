@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useStudioStore } from "../store/useStudioStore";
 import { ArrowLeft, CreditCard, Truck, Wallet, Bitcoin, Check } from "lucide-react";
 import { useRouter } from "next/navigation";
+import StudioHeader from "../components/StudioHeader";
 import clsx from "clsx";
 
 export default function CheckoutPage() {
@@ -63,7 +64,8 @@ export default function CheckoutPage() {
 
     return (
         <div className="min-h-screen bg-[#050505] text-white">
-            <div className="max-w-6xl mx-auto px-4 py-12">
+            <div className="max-w-6xl mx-auto px-4 py-8">
+                <StudioHeader />
                 <div className="flex items-end justify-between gap-4 mb-6">
                     <div>
                         <h1 className="text-3xl font-display font-bold">Checkout</h1>

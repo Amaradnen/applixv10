@@ -165,6 +165,33 @@ export default function ProfileControls() {
                                 ))}
                             </div>
                             <p className="text-[10px] text-white/40">Thème de la page</p>
+                            <p className="text-[10px] text-white/40">Thème de la page</p>
+                        </div>
+                    </div>
+
+                    {/* Layout Selector */}
+                    <div>
+                        <label className="text-xs font-bold uppercase tracking-wider text-white/50 mb-2 block">Disposition</label>
+                        <div className="grid grid-cols-3 gap-2">
+                            {[
+                                { id: 'list', label: 'Liste', icon: <div className="space-y-1 w-4"><div className="h-1 bg-current rounded-full" /><div className="h-1 bg-current rounded-full opacity-50" /></div> },
+                                { id: 'grid', label: 'Grille', icon: <div className="grid grid-cols-2 gap-0.5 w-4"><div className="h-1.5 bg-current rounded-sm" /><div className="h-1.5 bg-current rounded-sm opacity-50" /><div className="h-1.5 bg-current rounded-sm opacity-50" /><div className="h-1.5 bg-current rounded-sm" /></div> },
+                                { id: 'cards', label: 'Cartes', icon: <div className="space-y-1 w-4"><div className="h-2 bg-current rounded-sm" /><div className="h-1 bg-current rounded-sm opacity-50" /></div> }
+                            ].map((layout) => (
+                                <button
+                                    key={layout.id}
+                                    onClick={() => updateProfile({ layout: layout.id as any })}
+                                    className={clsx(
+                                        "h-10 rounded border flex flex-col items-center justify-center transition-all p-1 gap-1",
+                                        profile.layout === layout.id
+                                            ? "bg-white text-black border-white"
+                                            : "bg-white/5 text-white/50 border-white/10 hover:bg-white/10 hover:text-white"
+                                    )}
+                                >
+                                    {layout.icon}
+                                    <span className="text-[9px] font-bold">{layout.label}</span>
+                                </button>
+                            ))}
                         </div>
                     </div>
                 </section>

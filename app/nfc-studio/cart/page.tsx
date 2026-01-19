@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 import { useTranslations } from 'next-intl';
+import StudioHeader from "../components/StudioHeader";
 
 export default function CartPage() {
     const router = useRouter();
@@ -34,7 +35,9 @@ export default function CartPage() {
 
     return (
         <div className="min-h-screen bg-[#050505] text-white">
-            <div className="max-w-5xl mx-auto px-4 py-12">
+            <div className="max-w-5xl mx-auto px-4 py-8">
+                <StudioHeader />
+
                 <button
                     onClick={() => router.push('/dashboard')}
                     className="text-sm text-white/50 hover:text-white flex items-center gap-2 mb-8 transition"
