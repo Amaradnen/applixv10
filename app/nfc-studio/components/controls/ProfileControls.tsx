@@ -13,19 +13,41 @@ export default function ProfileControls() {
     const [newLinkUrl, setNewLinkUrl] = useState('');
     const avatarInputRef = useRef<HTMLInputElement>(null);
     const coverInputRef = useRef<HTMLInputElement>(null);
+    const [newLinkLabel, setNewLinkLabel] = useState('');
     const linkIdCounter = useRef(1000);
+
+    // Update label preference when type changes
+    React.useEffect(() => {
+        setNewLinkLabel(newLinkType.charAt(0).toUpperCase() + newLinkType.slice(1));
+    }, [newLinkType]);
 
     const handleAddLink = () => {
         if (!newLinkUrl) return;
+
+        let formattedUrl = newLinkUrl;
+        // Smart URL formatting
+        if (newLinkType === 'email' && !formattedUrl.startsWith('mailto:')) {
+            formattedUrl = `mailto:${formattedUrl}`;
+        } else if (newLinkType === 'phone' && !formattedUrl.startsWith('tel:')) {
+            formattedUrl = `tel:${formattedUrl}`;
+        } else if (newLinkType === 'whatsapp' && !formattedUrl.startsWith('https://wa.me/')) {
+            // Basic cleanup for whatsapp
+            const number = formattedUrl.replace(/[^\d]/g, '');
+            formattedUrl = `https://wa.me/${number}`;
+        } else if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://') && newLinkType !== 'email' && newLinkType !== 'phone') {
+            formattedUrl = `https://${formattedUrl}`;
+        }
+
         const newLink: SocialLink = {
             id: `link-${linkIdCounter.current++}`,
             type: newLinkType,
-            url: newLinkUrl,
-            label: newLinkType.charAt(0).toUpperCase() + newLinkType.slice(1),
+            url: formattedUrl,
+            label: newLinkLabel || newLinkType.charAt(0).toUpperCase() + newLinkType.slice(1),
             active: true
         };
         updateProfile({ links: [...profile.links, newLink] });
         setNewLinkUrl('');
+        setNewLinkLabel(newLinkType.charAt(0).toUpperCase() + newLinkType.slice(1));
         setIsAddingLink(false);
     };
 
@@ -204,15 +226,24 @@ export default function ProfileControls() {
                                     </button>
                                 ))}
                             </div>
-                            <input
-                                autoFocus
-                                type="text"
-                                value={newLinkUrl}
-                                onChange={(e) => setNewLinkUrl(e.target.value)}
-                                placeholder={`URL pour ${newLinkType}...`}
-                                className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white mb-3 focus:border-white/30 outline-none"
-                                onKeyDown={(e) => e.key === 'Enter' && handleAddLink()}
-                            />
+                            <div className="space-y-2 mb-3">
+                                <input
+                                    type="text"
+                                    value={newLinkLabel}
+                                    onChange={(e) => setNewLinkLabel(e.target.value)}
+                                    placeholder="Titre du lien (ex: Mon Email)"
+                                    className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-white/30 outline-none"
+                                />
+                                <input
+                                    autoFocus
+                                    type="text"
+                                    value={newLinkUrl}
+                                    onChange={(e) => setNewLinkUrl(e.target.value)}
+                                    placeholder={`URL pour ${newLinkType}...`}
+                                    className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-white/30 outline-none"
+                                    onKeyDown={(e) => e.key === 'Enter' && handleAddLink()}
+                                />
+                            </div>
                             <div className="flex gap-2">
                                 <button onClick={handleAddLink} className="flex-1 bg-white text-black text-xs font-bold py-2 rounded-lg hover:bg-gray-200 transition">Ajouter</button>
                                 <button onClick={() => setIsAddingLink(false)} className="px-3 text-white/40 hover:text-white text-xs">Annuler</button>
@@ -228,8 +259,9 @@ export default function ProfileControls() {
                                     <button onClick={() => moveLink(idx, 'down')} disabled={idx === profile.links.length - 1} className="text-white/20 hover:text-white disabled:opacity-0"><ChevronDown size={12} /></button>
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-xs font-bold text-white capitalize flex items-center gap-2">
-                                        {link.type}
+                                    <div className="text-xs font-bold text-white flex items-center gap-2">
+                                        {link.label}
+                                        <span className="text-[10px] font-normal opacity-50 capitalize">({link.type})</span>
                                     </div>
                                     <div className="text-[10px] text-white/40 truncate">{link.url}</div>
                                 </div>

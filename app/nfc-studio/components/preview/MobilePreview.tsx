@@ -98,20 +98,27 @@ export default function MobilePreview() {
                         </div>
                     )}
 
-                    {profile.links.filter(l => l.active).map(link => (
-                        <a
-                            key={link.id}
-                            href={link.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className={clsx("block w-full py-4 px-4 rounded-xl flex items-center gap-4 transition active:scale-[0.98] border shadow-sm", getButtonClasses())}
-                            style={{ color: currentTheme.colors.text }}
-                        >
-                            {getIcon(link.type)}
-                            <span className="text-xs font-bold flex-1">{link.label}</span>
-                            <ArrowRightIcon size={14} className="opacity-50" />
-                        </a>
-                    ))}
+                    {profile.links.filter(l => l.active).map(link => {
+                        let href = link.url;
+                        if (link.type === 'email' && !href.startsWith('mailto:')) href = `mailto:${href}`;
+                        else if (link.type === 'phone' && !href.startsWith('tel:')) href = `tel:${href}`;
+                        else if (!href.startsWith('http') && link.type !== 'email' && link.type !== 'phone') href = `https://${href}`;
+
+                        return (
+                            <a
+                                key={link.id}
+                                href={href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={clsx("block w-full py-4 px-4 rounded-xl flex items-center gap-4 transition active:scale-[0.98] border shadow-sm", getButtonClasses())}
+                                style={{ color: currentTheme.colors.text }}
+                            >
+                                {getIcon(link.type)}
+                                <span className="text-xs font-bold flex-1">{link.label}</span>
+                                <ArrowRightIcon size={14} className="opacity-50" />
+                            </a>
+                        );
+                    })}
                 </div>
 
                 {/* Branding Footer */}
