@@ -70,10 +70,10 @@ export default function Card3D() {
             >
                 {/* FRONT FACE */}
                 <div className={clsx(
-                    "absolute inset-0 rounded-2xl p-8 flex flex-col justify-between shadow-2xl backface-hidden overflow-hidden",
+                    "absolute inset-0 rounded-2xl p-8 flex flex-col justify-between shadow-2xl overflow-hidden",
                     !cardFront.backgroundUrl && getMaterialClass(),
                     getTextColor()
-                )}>
+                )} style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
                     {/* Front Background Image */}
                     {cardFront.backgroundUrl && (
                         <div className="absolute inset-0 z-0">
@@ -183,10 +183,10 @@ export default function Card3D() {
 
                 {/* BACK FACE */}
                 <div className={clsx(
-                    "absolute inset-0 rounded-2xl p-8 flex flex-col items-center justify-center shadow-2xl backface-hidden overflow-hidden",
+                    "absolute inset-0 rounded-2xl p-8 flex flex-col items-center justify-center shadow-2xl overflow-hidden",
                     !cardBack.backgroundUrl && getMaterialClass(),
                     getTextColor()
-                )} style={{ transform: "rotateY(180deg)" }}>
+                )} style={{ transform: "rotateY(180deg)", backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
 
                     {/* Back Background Image */}
                     {cardBack.backgroundUrl && (
