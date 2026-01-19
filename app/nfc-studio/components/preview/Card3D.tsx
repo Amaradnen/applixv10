@@ -217,15 +217,6 @@ export default function Card3D() {
                             </div>
                         )}
 
-                        <p
-                            contentEditable
-                            suppressContentEditableWarning
-                            onBlur={(e) => updateCardBackInvitationText(e.currentTarget.textContent || '')}
-                            className="text-xs font-bold tracking-widest uppercase opacity-70 outline-none focus:ring-2 focus:ring-gg-gold/50 rounded px-2 py-1 cursor-text"
-                        >
-                            {cardBack.text}
-                        </p>
-
                         {/* Verso Contact Info */}
                         <div className="text-center space-y-1 text-[10px] opacity-60">
                             {cardBack.texts.email && (
