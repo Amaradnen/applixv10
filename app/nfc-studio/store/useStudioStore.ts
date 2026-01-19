@@ -43,6 +43,8 @@ export interface CardBackState {
     signatureEnabled?: boolean;
     signatureType?: "text" | "draw" | "upload";
     signatureValue?: string;
+    signatureLabel?: string; // Papara style label below signature
+
     texts: {
         email?: string;
         phone?: string;
@@ -178,6 +180,7 @@ const defaultCardBack: CardBackState = {
     signatureEnabled: false,
     signatureType: "text",
     signatureValue: "",
+    signatureLabel: "",
     texts: {
         email: "contact@applix.com",
         phone: "+33 6 12 34 56 78",

@@ -282,6 +282,17 @@ export default function DesignControls() {
                                                 placeholder="Votre signature"
                                             />
                                         )}
+
+                                        <div className="mt-3 pt-3 border-t border-white/10">
+                                            <label className="text-[10px] text-white/40 mb-1 block uppercase font-bold">Texte sous signature</label>
+                                            <input
+                                                type="text"
+                                                value={cardBack.signatureLabel || ''}
+                                                onChange={(e) => updateCardBack({ signatureLabel: e.target.value })}
+                                                className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30 italic"
+                                                placeholder="ex: Luxora Clinic"
+                                            />
+                                        </div>
                                     </div>
                                 )}
                             </div>

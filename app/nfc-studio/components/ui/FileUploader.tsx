@@ -78,6 +78,7 @@ export default function FileUploader({
         setPreview(null);
         setError(null);
         if (fileInputRef.current) fileInputRef.current.value = '';
+        onUploadComplete(''); // Notify parent that file is removed
     };
 
     return (

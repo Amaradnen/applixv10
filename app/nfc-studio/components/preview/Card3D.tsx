@@ -262,15 +262,24 @@ export default function Card3D() {
                         </div>
 
                         {/* Signature - VERSO ONLY */}
-                        {cardBack.signatureEnabled && cardBack.signatureValue && (
-                            <div className="mt-3">
-                                {cardBack.signatureType === 'text' && (
-                                    <div className="font-script text-2xl opacity-80 rotate-[-5deg]" style={{ fontFamily: 'cursive' }}>
-                                        {cardBack.signatureValue}
-                                    </div>
+                        {cardBack.signatureEnabled && (cardBack.signatureValue || cardBack.signatureLabel) && (
+                            <div className="mt-4 flex flex-col items-center">
+                                {cardBack.signatureValue && (
+                                    <>
+                                        {cardBack.signatureType === 'text' && (
+                                            <div className="font-script text-2xl opacity-90 rotate-[-5deg]" style={{ fontFamily: 'cursive' }}>
+                                                {cardBack.signatureValue}
+                                            </div>
+                                        )}
+                                        {(cardBack.signatureType === 'draw' || cardBack.signatureType === 'upload') && (
+                                            <img src={cardBack.signatureValue} className="h-14 object-contain rotate-[-2deg] opacity-90 drop-shadow-sm invert" alt="Signature" style={{ filter: 'invert(1) brightness(2)' }} />
+                                        )}
+                                    </>
                                 )}
-                                {(cardBack.signatureType === 'draw' || cardBack.signatureType === 'upload') && (
-                                    <img src={cardBack.signatureValue} className="h-12 object-contain rotate-[-5deg] opacity-90" alt="Signature" />
+                                {cardBack.signatureLabel && (
+                                    <div className="font-serif italic text-sm text-white/90 mt-1 tracking-wide drop-shadow-md pb-2">
+                                        {cardBack.signatureLabel}
+                                    </div>
                                 )}
                             </div>
                         )}
