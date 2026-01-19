@@ -116,22 +116,21 @@ export default function DesignControls() {
                             </div>
                         </section>
 
-                        <section>
-                            <label className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
-                                <Layout size={14} /> Informations
-                            </label>
-                            <div className="space-y-3">
-                                {Object.entries(cardFront.texts).map(([key, val]) => (
-                                    <div key={key}>
-                                        <input
-                                            type="text"
-                                            value={val}
-                                            onChange={(e) => updateCardFrontText(key as any, e.target.value)}
-                                            className="w-full bg-[#111] border border-white/10 p-3 rounded-lg text-sm text-white focus:border-gg-gold/50 outline-none transition placeholder:opacity-30"
-                                            placeholder={key.toUpperCase()}
-                                        />
+                        <section className="bg-gg-gold/10 border border-gg-gold/20 rounded-xl p-4">
+                            <div className="flex items-start gap-3">
+                                <div className="text-gg-gold mt-0.5">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M12 16v-4" />
+                                        <path d="M12 8h.01" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div className="text-xs font-bold text-gg-gold mb-1">Édition Directe</div>
+                                    <div className="text-[11px] text-white/60 leading-relaxed">
+                                        Cliquez directement sur le texte de la carte (nom, titre, entreprise) pour le modifier.
                                     </div>
-                                ))}
+                                </div>
                             </div>
                         </section>
 
