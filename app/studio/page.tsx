@@ -9,7 +9,7 @@ export default function Page() {
         <p className="text-white/60 text-lg max-w-2xl">Production visuelle, Ads et acquisition. (Placeholder — tu peux coller ta vraie interface ensuite.)</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/dashboard" className="px-6 py-3 rounded-xl">Demander un devis</Button>
-          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">NFC Studio</Button>
+          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">APPLIX STUDIO</Button>
         </div>
       </div>
     </div>

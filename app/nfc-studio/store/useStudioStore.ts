@@ -177,7 +177,7 @@ const defaultCardFront: CardFrontState = {
         name: "ALEX MARTIN",
         title: "FOUNDER & CEO",
         company: "APPLIX VISION",
-        website: "applix.com",
+        website: "applix.digital",
     },
     layout: "minimal",
     brandName: "APPLIX",
@@ -190,17 +190,17 @@ const defaultCardFront: CardFrontState = {
 const defaultCardBack: CardBackState = {
     text: "Scannez pour connecter",
     qrEnabled: true,
-    qrUrl: "https://applix.me/alex",
+    qrUrl: "https://applix.digital/u/alex",
     logoEnabled: true,
     signatureEnabled: false,
     signatureType: "text",
     signatureValue: "",
     signatureLabel: "",
     texts: {
-        email: "contact@applix.com",
+        email: "contact@applix.digital",
         phone: "+33 6 12 34 56 78",
         address: "Paris, France",
-        website: "applix.com"
+        website: "applix.digital"
     }
 };
 

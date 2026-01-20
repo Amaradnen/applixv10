@@ -9,7 +9,7 @@ export default function Page() {
         <p className="text-white/60 text-lg max-w-2xl">Zone abonnements et offres VIP. (Placeholder)</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/dashboard" className="px-6 py-3 rounded-xl">Commander</Button>
-          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">NFC Studio</Button>
+          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">APPLIX STUDIO</Button>
         </div>
       </div>
     </div>

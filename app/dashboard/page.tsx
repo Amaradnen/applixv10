@@ -9,7 +9,7 @@ export default function Page() {
         <p className="text-white/60 text-lg max-w-2xl">Sans login pour l’instant : page de pilotage (stats, commandes, contenu).</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/admin" className="px-6 py-3 rounded-xl">Aller Admin</Button>
-          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">NFC Studio</Button>
+          <Button href="/nfc-studio" variant="ghost" className="px-6 py-3 rounded-xl border-gold">APPLIX STUDIO</Button>
         </div>
       </div>
     </div>

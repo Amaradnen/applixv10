@@ -14,13 +14,12 @@ export default function Navbar() {
   const t = useTranslations('nav');
 
   const nav = [
-    { href: "/", label: t('home') },
-    { href: "/studio", label: t('studio') },
-    { href: "/ai-app", label: t('aiApp') },
-    { href: "/products", label: t('products') },
-    { href: "/academy", label: t('academy') },
-    { href: "/nfc-studio", label: t('nfcStudio') },
-    { href: "/hub", label: t('hub') }
+    { href: "/", label: "Site Vitrine" },
+    { href: "/ai-app", label: "PACKAGE IA" },
+    { href: "/nfc-studio", label: "APPLIX STUDIO" },
+    { href: "/u/demo", label: "Profils Publics" },
+    { href: "/hub", label: "Hub" },
+    { href: "/academy", label: "Académie" }
   ];
 
   return (

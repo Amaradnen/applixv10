@@ -22,7 +22,7 @@ export default function AiApp() {
     <div className="max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-12 gap-6">
         <div className="lg:col-span-5 glass-card rounded-3xl p-6 border border-white/10">
-          <div className="text-gold text-xs font-bold tracking-widest mb-2">APPLIX IA APP (v2)</div>
+          <div className="text-gold text-xs font-bold tracking-widest mb-2">APPLIX PACKAGE IA</div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-2">Agents & Automatisation</h2>
           <p className="text-white/60 text-sm mb-6">
             Version “app” : sélection d’agent, prompt prêt, checklist d’intégration. (Sans backend pour l’instant)
@@ -73,7 +73,7 @@ export default function AiApp() {
                 Copier prompt
               </Button>
               <Button href="/nfc-studio" variant="ghost" className="px-5 py-3 rounded-xl border-gold">
-                NFC Studio
+                APPLIX STUDIO
               </Button>
             </div>
           </div>

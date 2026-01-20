@@ -20,7 +20,7 @@ export default async function PublicProfile({
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button href="/nfc-studio" className="px-6 py-3 rounded-xl">Modifier dans NFC Studio</Button>
+          <Button href="/nfc-studio" className="px-6 py-3 rounded-xl">Modifier dans APPLIX STUDIO</Button>
           <Button href="/" variant="ghost" className="px-6 py-3 rounded-xl border-gold">Retour Home</Button>
         </div>
       </div>

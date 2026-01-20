@@ -36,8 +36,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
     return (
         <NextIntlClientProvider locale={language} messages={messages}>
-            {!isStudio && <Navbar />}
-            <main className={isStudio ? "" : "pt-28 pb-10 px-4 min-h-[calc(100vh-160px)]"}>
+            <Navbar />
+            <main className={isStudio ? "pt-24" : "pt-28 pb-10 px-4 min-h-[calc(100vh-160px)]"}>
                 {children}
             </main>
             {!isStudio && <Footer />}
