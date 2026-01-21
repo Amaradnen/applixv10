@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import { Trash2, Check, PenTool } from 'lucide-react';
+import clsx from 'clsx';
 
 interface SignaturePadProps {
     onSave: (dataURL: string) => void;
@@ -35,34 +36,47 @@ export default function SignaturePad({ onSave, onClear, currentSignature }: Sign
     return (
         <div className="space-y-3">
             {/* Controls */}
-            <div className="grid grid-cols-2 gap-3">
-                <div>
-                    <label className="text-[10px] text-white/40 mb-1 block">Épaisseur: {strokeWidth}px</label>
-                    <input
-                        type="range"
-                        min="1"
-                        max="5"
-                        value={strokeWidth}
-                        onChange={(e) => setStrokeWidth(parseInt(e.target.value))}
-                        className="w-full"
-                    />
+            {/* Controls */}
+            <div className="flex items-center justify-between gap-4 p-1">
+                {/* Stroke Width */}
+                <div className="flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10">
+                    {[1, 3, 5].map((w) => (
+                        <button
+                            key={w}
+                            onClick={() => setStrokeWidth(w)}
+                            className={clsx(
+                                "w-8 h-8 rounded-full flex items-center justify-center transition-all",
+                                strokeWidth === w ? "bg-white text-black shadow-sm" : "text-white/40 hover:text-white"
+                            )}
+                            title={`${w}px`}
+                        >
+                            <div className="bg-current rounded-full" style={{ width: w * 1.5, height: w * 1.5 }} />
+                        </button>
+                    ))}
                 </div>
-                <div>
-                    <label className="text-[10px] text-white/40 mb-1 block">Couleur</label>
-                    <div className="flex gap-2">
+
+                {/* Colors */}
+                <div className="flex items-center gap-2">
+                    {['#000000', '#0000FF', '#FF0000', '#008000'].map((c) => (
                         <button
-                            onClick={() => setColor('#000000')}
-                            className={`w-8 h-8 rounded border-2 ${color === '#000000' ? 'border-gg-gold' : 'border-white/20'} bg-black`}
+                            key={c}
+                            onClick={() => setColor(c)}
+                            className={clsx(
+                                "w-6 h-6 rounded-full border-2 transition-all hover:scale-110",
+                                color === c ? "border-gg-gold scale-110 shadow-[0_0_10px_rgba(227,181,46,0.5)]" : "border-white/10 opacity-70 hover:opacity-100"
+                            )}
+                            style={{ backgroundColor: c }}
+                            title={c}
                         />
-                        <button
-                            onClick={() => setColor('#0000FF')}
-                            className={`w-8 h-8 rounded border-2 ${color === '#0000FF' ? 'border-gg-gold' : 'border-white/20'} bg-blue-600`}
-                        />
+                    ))}
+                    {/* Custom Picker Wrapper */}
+                    <div className="relative w-6 h-6 rounded-full border-2 border-white/10 overflow-hidden ml-1 opacity-70 hover:opacity-100 transition">
                         <input
                             type="color"
                             value={color}
                             onChange={(e) => setColor(e.target.value)}
-                            className="w-8 h-8 rounded border-2 border-white/20 cursor-pointer"
+                            className="absolute -top-2 -left-2 w-10 h-10 cursor-pointer p-0 border-0"
+                            title="Custom Color"
                         />
                     </div>
                 </div>

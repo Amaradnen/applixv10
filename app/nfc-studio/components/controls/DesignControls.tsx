@@ -154,86 +154,7 @@ export default function DesignControls() {
                             />
                         </section>
 
-                        {/* Signature Section - RECTO */}
-                        <div>
-                            <div className="flex justify-between items-center mb-3">
-                                <label className="text-xs font-bold uppercase tracking-wider text-white/50 flex items-center gap-2">
-                                    <PenTool size={14} /> Signature
-                                </label>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-[10px] text-white/60 uppercase">{cardFront.signatureEnabled ? "ON" : "OFF"}</span>
-                                    <button
-                                        onClick={() => updateCardFront({ signatureEnabled: !cardFront.signatureEnabled })}
-                                        className={clsx("w-8 h-4 rounded-full relative transition-colors", cardFront.signatureEnabled ? "bg-gg-gold" : "bg-white/20")}
-                                    >
-                                        <div className={clsx("absolute top-0.5 w-3 h-3 rounded-full bg-black transition-all", cardFront.signatureEnabled ? "left-4.5" : "left-0.5")} />
-                                    </button>
-                                </div>
-                            </div>
-                            {cardFront.signatureEnabled && (
-                                <div className="space-y-3 mt-3">
-                                    <div className="grid grid-cols-3 gap-2">
-                                        <button
-                                            onClick={() => updateCardFront({ signatureType: 'text' })}
-                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'text' ? "bg-white/10 border-gg-gold" : "border-white/10")}
-                                        >
-                                            Texte
-                                        </button>
-                                        <button
-                                            onClick={() => updateCardFront({ signatureType: 'draw' })}
-                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'draw' ? "bg-white/10 border-gg-gold" : "border-white/10")}
-                                        >
-                                            Dessiner
-                                        </button>
-                                        <button
-                                            onClick={() => updateCardFront({ signatureType: 'upload' })}
-                                            className={clsx("p-2 rounded border text-xs font-bold text-white transition", cardFront.signatureType === 'upload' ? "bg-white/10 border-gg-gold" : "border-white/10")}
-                                        >
-                                            Image
-                                        </button>
-                                    </div>
-
-                                    {cardFront.signatureType === 'draw' && (
-                                        <SignaturePad
-                                            currentSignature={cardFront.signatureValue}
-                                            onSave={(dataURL) => updateCardFront({ signatureValue: dataURL })}
-                                            onClear={() => updateCardFront({ signatureValue: '' })}
-                                        />
-                                    )}
-
-                                    {cardFront.signatureType === 'upload' && (
-                                        <FileUploader
-                                            label="Signature Image"
-                                            currentFile={cardFront.signatureValue}
-                                            onUploadComplete={(url) => updateCardFront({ signatureValue: url })}
-                                            accept="image/*"
-                                            maxSize={2}
-                                        />
-                                    )}
-
-                                    {cardFront.signatureType === 'text' && (
-                                        <input
-                                            type="text"
-                                            value={cardFront.signatureValue || ''}
-                                            onChange={(e) => updateCardFront({ signatureValue: e.target.value })}
-                                            className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                            placeholder="Votre signature"
-                                        />
-                                    )}
-
-                                    <div className="mt-3 pt-3 border-t border-white/10">
-                                        <label className="text-[10px] text-white/40 mb-1 block uppercase font-bold">Texte sous signature</label>
-                                        <input
-                                            type="text"
-                                            value={cardFront.signatureLabel || ''}
-                                            onChange={(e) => updateCardFront({ signatureLabel: e.target.value })}
-                                            className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30 italic"
-                                            placeholder="ex: Luxora Clinic"
-                                        />
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                        {/* Signature Section Removed for Recto - Available on Verso Only */}
                     </>
                 )}
 
@@ -393,13 +314,61 @@ export default function DesignControls() {
                             </div>
 
                             {cardBack.qrEnabled && (
-                                <input
-                                    type="url"
-                                    value={cardBack.qrUrl}
-                                    onChange={(e) => updateCardBack({ qrUrl: e.target.value })}
-                                    className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
-                                    placeholder="https://applix.me/votre-profil"
-                                />
+                                <div className="space-y-2 mt-2">
+                                    <input
+                                        type="url"
+                                        value={cardBack.qrUrl}
+                                        onChange={(e) => updateCardBack({ qrUrl: e.target.value })}
+                                        className="w-full bg-black/50 border border-white/10 rounded-lg p-2 text-sm text-white placeholder:text-white/30"
+                                        placeholder="https://applix.digital/u/votre-profil"
+                                    />
+                                    {/* QR Colors */}
+                                    <div className="flex gap-4">
+                                        <div className="flex-1">
+                                            <label className="text-[10px] text-white/40 mb-1 block">QRCode</label>
+                                            <div className="flex gap-1">
+                                                {['#000000', '#FFFFFF', '#D4AF37'].map((c) => (
+                                                    <button
+                                                        key={c}
+                                                        onClick={() => updateCardBack({ qrColor: c })}
+                                                        className={clsx("w-6 h-6 rounded border-2 transition", cardBack.qrColor === c ? "border-gg-gold" : "border-white/20")}
+                                                        style={{ backgroundColor: c }}
+                                                    />
+                                                ))}
+                                                <input
+                                                    type="color"
+                                                    value={cardBack.qrColor || '#000000'}
+                                                    onChange={(e) => updateCardBack({ qrColor: e.target.value })}
+                                                    className="w-6 h-6 p-0 border-0 rounded cursor-pointer ml-1"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="flex-1">
+                                            <label className="text-[10px] text-white/40 mb-1 block">Fond</label>
+                                            <div className="flex gap-1">
+                                                {['#FFFFFF', '#000000', 'transparent'].map((c) => (
+                                                    <button
+                                                        key={c}
+                                                        onClick={() => updateCardBack({ qrBgColor: c })}
+                                                        className={clsx("w-6 h-6 rounded border-2 transition relative overflow-hidden", cardBack.qrBgColor === c ? "border-gg-gold" : "border-white/20")}
+                                                        style={c === 'transparent' ? {} : { backgroundColor: c }}
+                                                        title={c === 'transparent' ? 'Transparent' : c}
+                                                    >
+                                                        {c === 'transparent' && (
+                                                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/checkerboard-cross.png')] opacity-20" />
+                                                        )}
+                                                    </button>
+                                                ))}
+                                                <input
+                                                    type="color"
+                                                    value={cardBack.qrBgColor || '#FFFFFF'}
+                                                    onChange={(e) => updateCardBack({ qrBgColor: e.target.value })}
+                                                    className="w-6 h-6 p-0 border-0 rounded cursor-pointer ml-1"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             )}
 
                             <div className="flex justify-between items-center">

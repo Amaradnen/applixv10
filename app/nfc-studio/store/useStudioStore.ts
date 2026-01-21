@@ -53,6 +53,9 @@ export interface CardBackState {
     signatureValue?: string;
     signatureLabel?: string; // Papara style label below signature
 
+    qrColor?: string;
+    qrBgColor?: string;
+
     texts: {
         email?: string;
         phone?: string;
@@ -191,6 +194,8 @@ const defaultCardBack: CardBackState = {
     text: "Scannez pour connecter",
     qrEnabled: true,
     qrUrl: "https://applix.digital/u/alex",
+    qrColor: "#000000",
+    qrBgColor: "#FFFFFF",
     logoEnabled: true,
     signatureEnabled: false,
     signatureType: "text",

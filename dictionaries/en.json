@@ -1,0 +1,46 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "digital_products": "Digital Products",
+        "saas_automation": "SaaS Automation",
+        "academy": "Academy",
+        "hub": "Community Hub",
+        "templates": "Templates",
+        "pricing": "Pricing",
+        "case_studies": "Case Studies",
+        "blog": "Blog",
+        "contact": "Contact",
+        "open_app": "Open App"
+    },
+    "common": {
+        "get_started": "Get Started",
+        "learn_more": "Learn More",
+        "view_all": "View All",
+        "read_more": "Read More",
+        "features": "Features",
+        "pricing": "Pricing",
+        "faq": "FAQ",
+        "contact_us": "Contact Us"
+    },
+    "home": {
+        "hero": {
+            "title": "APPLIX",
+            "subtitle": "The complete ecosystem for your digital transformation",
+            "description": "Premium NFC cards, digital products, intelligent automation, academy and community. Everything you need to succeed online.",
+            "cta_primary": "Discover Our Services",
+            "cta_secondary": "View Demos"
+        }
+    },
+    "footer": {
+        "tagline": "Transform your digital presence",
+        "services_title": "Services",
+        "company_title": "Company",
+        "legal_title": "Legal",
+        "privacy": "Privacy",
+        "terms": "Terms of Service",
+        "refund": "Refund Policy",
+        "shipping": "Shipping",
+        "copyright": "© 2026 APPLIX. All rights reserved."
+    }
+}

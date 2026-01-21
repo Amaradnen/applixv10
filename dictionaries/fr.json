@@ -1,0 +1,46 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "services": "Services",
+        "digital_products": "Produits Numériques",
+        "saas_automation": "Automation SaaS",
+        "academy": "Académie",
+        "hub": "Hub Communautaire",
+        "templates": "Templates",
+        "pricing": "Tarifs",
+        "case_studies": "Études de Cas",
+        "blog": "Blog",
+        "contact": "Contact",
+        "open_app": "Ouvrir l'app"
+    },
+    "common": {
+        "get_started": "Commencer",
+        "learn_more": "En savoir plus",
+        "view_all": "Tout voir",
+        "read_more": "Lire la suite",
+        "features": "Fonctionnalités",
+        "pricing": "Tarifs",
+        "faq": "FAQ",
+        "contact_us": "Nous contacter"
+    },
+    "home": {
+        "hero": {
+            "title": "APPLIX",
+            "subtitle": "L'écosystème complet pour votre transformation digitale",
+            "description": "Cartes NFC premium, produits numériques, automation intelligente, académie et communauté. Tout ce dont vous avez besoin pour réussir en ligne.",
+            "cta_primary": "Découvrir nos services",
+            "cta_secondary": "Voir les démos"
+        }
+    },
+    "footer": {
+        "tagline": "Transformez votre présence digitale",
+        "services_title": "Services",
+        "company_title": "Entreprise",
+        "legal_title": "Légal",
+        "privacy": "Confidentialité",
+        "terms": "Conditions d'utilisation",
+        "refund": "Politique de remboursement",
+        "shipping": "Expédition",
+        "copyright": "© 2026 APPLIX. Tous droits réservés."
+    }
+}
